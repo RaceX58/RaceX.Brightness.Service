@@ -83,7 +83,6 @@ public class BrightnessService extends Service {
 
         startForeground(1, notification);
         var serialWriter = new SerialWriter(CustomMcuCommunicator.mcuSource);
-        var serialReader = new SerialReader(CustomMcuCommunicator.mcuSource);
         MyMcuCommunicator = new CustomMcuCommunicator(serialWriter, new LogcatReader(), getApplicationContext());
         registerReceiver(MyApp.getContext());
         PreferenceHelper.sInstance.saveBoolean("isBrightnessServiceEnabled", true);
