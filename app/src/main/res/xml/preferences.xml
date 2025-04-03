@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Global settings"
+        >
+        <SwitchPreference
+            android:title="Enable service"
+            android:defaultValue="false"
+            android:summary="Start the main brightness service"
+            android:key="isBrightnessServiceEnabled" />
+        <SwitchPreference
+            android:title="Restore service at boot"
+            android:defaultValue="false"
+            android:summary="Restore the main brightness service after the device boot is completed"
+            android:key="restoreBrightnessService" />
+        <SwitchPreference
+            android:title="Automatic brightness"
+            android:defaultValue="false"
+            android:summary="Enable automatic brightness adjustment based on daytime"
+            android:key="isAutomaticBrightness" />
+
+        <!-- <com.pavelsikun.seekbarpreference.SeekBarPreference -->
+        <!-- android:key="dayModeBrightness" -->
+        <!-- android:title="Day mode brightness" -->
+        <!-- android:summary="Set brightness during day hours" -->
+        <!-- android:enabled="true" -->
+        <!-- android:defaultValue="100" -->
+        <!-- sample:msbp_minValue="0" -->
+        <!-- sample:msbp_maxValue="100" -->
+        <!-- sample:msbp_interval="10" -->
+        <!-- sample:msbp_measurementUnit="%" -->
+        <!-- sample:msbp_dialogEnabled="false"/> -->
+
+        <SeekBarPreference
+            android:key="dayModeBrightness"
+            android:title="Day mode brightness"
+            android:summary="Set brightness during day hours"
+            android:defaultValue="100"
+            android:max="100"
+            app:seekBarIncrement="10"
+            app:adjustable="true"
+            android:min="0" />
+
+        <!-- <com.pavelsikun.seekbarpreference.SeekBarPreference -->
+        <!-- android:key="nightModeBrightness" -->
+        <!-- android:title="Night mode brightness" -->
+        <!-- android:summary="Set brightness during night hours" -->
+        <!-- android:enabled="true" -->
+        <!-- android:defaultValue="20" -->
+        <!-- sample:msbp_minValue="0" -->
+        <!-- sample:msbp_maxValue="100" -->
+        <!-- sample:msbp_interval="10" -->
+        <!-- sample:msbp_measurementUnit="%" -->
+        <!-- sample:msbp_dialogEnabled="false"/> -->
+        <SeekBarPreference
+            android:key="nightModeBrightness"
+            android:title="Night mode brightness"
+            android:summary="Set brightness during night hours"
+            android:defaultValue="20"
+            app:seekBarIncrement="10"
+            app:adjustable="true"
+            android:max="100"
+            android:min="0" />
+        <SwitchPreference
+            android:title="Steering wheel support"
+            android:defaultValue="false"
+            android:summary="Enable the steering wheel controls"
+            android:key="enableSWC" />
+        <SwitchPreference
+            android:title="Sound restorer"
+            android:defaultValue="false"
+            android:summary="Enable the sounder restorer feature"
+            android:key="enableSoundRestorer" />
+        <SwitchPreference
+            android:title="Hotspot support"
+            android:defaultValue="false"
+            android:summary="Allow to disable the hotspot created by Zlink"
+            android:key="hotspotSupport" />
+<!--        <SwitchPreference-->
+<!--            android:title="Show on startup"-->
+<!--            android:defaultValue="false"-->
+<!--            android:summary="Display main interface on startup"-->
+<!--            android:key="showUIOnBoot" />-->
+    </PreferenceCategory>
+</PreferenceScreen>
