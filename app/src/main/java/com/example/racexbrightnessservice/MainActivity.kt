@@ -16,6 +16,7 @@ import com.example.racexbrightnessservice.helpers.ServiceHelper
 import com.example.racexbrightnessservice.helpers.TimeHelper
 import com.example.racexbrightnessservice.receiver.MainActivityReceiver
 import com.example.racexbrightnessservice.service.BrightnessService
+import com.example.racexbrightnessservice.utils.KswUtils
 import com.google.android.material.slider.Slider
 
 class MainActivity : ComponentActivity() {
@@ -44,7 +45,6 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         if (BrightnessService.isBrightnessServiceEnabled
-            && BrightnessService.restoreBrightnessService
             && !ServiceHelper.isServiceRunning(
                 MyApp.getContext(),
                 BrightnessService::class.java
@@ -60,6 +60,8 @@ class MainActivity : ComponentActivity() {
         intentFilter.addAction("ovh.msinfo.IDRIVE_CLICK")
         intentFilter.addAction("ovh.msinfo.NIGHT_MODE")
         intentFilter.addAction("ovh.msinfo.DAYTIME_DURATION")
+        intentFilter.addAction(KswUtils.ZXW_ACTION_KEY_EVT)
+        intentFilter.addAction(KswUtils.ZXW_CAN_KEY_EVT)
 
         receiver = MainActivityReceiver(this);
         ContextCompat.registerReceiver(
@@ -78,8 +80,6 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun loadActivity(){
-
-
         setContentView(R.layout.activity_main)
         tvCurrentBrightness = findViewById(R.id.tvCurrentBrightness);
         sliderCurrentBrightness = findViewById(R.id.sliderCurrentBrightness);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fond de la barre -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp"/>
+            <solid android:color="#50FFFFFF"/>  <!-- Gris semi-transparent -->
+            <size android:height="8dp"/>  <!-- Épaisseur du fond -->
+        </shape>
+    </item>
+
+    <!-- Partie remplie (progress) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="8dp"/>
+                <solid android:color="#FFFFFF"/>  <!-- Blanc pur -->
+                <size android:height="8dp"/>  <!-- Épaisseur identique -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

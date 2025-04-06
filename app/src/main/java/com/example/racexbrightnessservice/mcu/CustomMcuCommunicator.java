@@ -85,7 +85,18 @@ public class CustomMcuCommunicator extends McuCommunicator {
     }
 
     public static void GetMcuPath(){
-        setMcuSource("/dev/ttyHS1");
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            setMcuSource("/dev/ttyHS1");
+        } else if (Build.DISPLAY.contains("8937")) {
+            setMcuSource("/dev/ttyHSL1");
+        } else {
+            setMcuSource("/dev/ttyMSM1");
+        }
+
+
+//        setMcuSource("/dev/ttyHS1");
+
+
         return;
 //        var sharedValue = PreferenceHelper.sInstance.getString("mcuSource",null);
 //        if (sharedValue != null){

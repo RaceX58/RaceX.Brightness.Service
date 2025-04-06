@@ -4,12 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.racexbrightnessservice.MainActivity;
 import com.example.racexbrightnessservice.helpers.MCUEventHelper;
 import com.example.racexbrightnessservice.helpers.PreferenceHelper;
 import com.example.racexbrightnessservice.helpers.TimeHelper;
 import com.example.racexbrightnessservice.service.BrightnessService;
+import com.example.racexbrightnessservice.utils.KswUtils;
 
 public class MainActivityReceiver extends BroadcastReceiver {
 
@@ -40,6 +42,10 @@ public class MainActivityReceiver extends BroadcastReceiver {
                 mainActivity.sliderCurrentBrightness.setValue(BrightnessService.brightnessValue);
                 mainActivity.testNightMode.setChecked(BrightnessService.isNightMode);
                 mainActivity.tvCurrentBrightness.setText(String.valueOf(BrightnessService.brightnessValue));
+                break;
+            case KswUtils.ZXW_CAN_KEY_EVT:
+                int value = extras.getInt(KswUtils.ZXW_CAN_KEY_EVT_EXTRA, -1);
+                Toast.makeText(context,KswUtils.ZXW_CAN_KEY_EVT + " - " + String.valueOf(value), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

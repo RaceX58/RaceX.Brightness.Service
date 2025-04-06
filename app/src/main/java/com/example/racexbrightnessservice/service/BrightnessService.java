@@ -10,6 +10,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
@@ -23,6 +25,8 @@ import com.example.racexbrightnessservice.helpers.TimeHelper;
 import com.example.racexbrightnessservice.mcu.CustomMcuCommunicator;
 import com.example.racexbrightnessservice.mcu.SoundRestorer;
 import com.example.racexbrightnessservice.receiver.BrightnessControlReceiver;
+import com.example.racexbrightnessservice.utils.SysProviderOpt;
+import android.provider.Settings;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +51,8 @@ public class BrightnessService extends Service {
     public static int nightModeBrightness = 20;
     public  static boolean hotspotSupport;
     public  static boolean restoreBrightnessService;
+    public static SysProviderOpt mSysProviderOpt;
+
 
     @Override
     public void onCreate() {
@@ -71,6 +77,9 @@ public class BrightnessService extends Service {
                 Toast.makeText(MyApp.getContext(),"An error occured while disabling hotspot", Toast.LENGTH_SHORT).show();
         }
 
+        SysProviderOpt instance = SysProviderOpt.getInstance(this);
+
+
         CustomMcuCommunicator.GetMcuPath();
         AdbRootAccessHelper.grantMcuSourcePermissions(getApplicationContext());
 
@@ -83,23 +92,30 @@ public class BrightnessService extends Service {
 
         startForeground(1, notification);
         var serialWriter = new SerialWriter(CustomMcuCommunicator.mcuSource);
-        MyMcuCommunicator = new CustomMcuCommunicator(serialWriter, new LogcatReader(), getApplicationContext());
+        var serialReader = new SerialReader(CustomMcuCommunicator.mcuSource);
+        MyMcuCommunicator = new CustomMcuCommunicator(serialWriter, serialReader, getApplicationContext());
         registerReceiver(MyApp.getContext());
         PreferenceHelper.sInstance.saveBoolean("isBrightnessServiceEnabled", true);
         Toast.makeText(getApplicationContext(), "Service démarré sur " + CustomMcuCommunicator.mcuSource, Toast.LENGTH_SHORT).show();
 
+        mSysProviderOpt = instance;
+        int settingInt = getSettingInt(SysProviderOpt.KEY_BRIGHTNESS_SETTINGS, 50);
+        Toast.makeText(MyApp.getContext(), "SysProviderOpt.KEY_BRIGHTNESS_SETTINGS - " + settingInt, Toast.LENGTH_SHORT).show();
 
-        try {
-            MyMcuCommunicator.mcuReader.startReading(MyMcuCommunicator.mcuAction);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if (enableSWC){
+            try {
+                MyMcuCommunicator.mcuReader.startReading(MyMcuCommunicator.mcuAction);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
         }
 
-        try {
-            if (PreferenceHelper.sInstance.getBoolean("enableSoundRestorer", false))
-                SoundRestorer.restoreSound(MyMcuCommunicator);
-        } catch (Exception e) {
-        }
+//        try {
+//            if (PreferenceHelper.sInstance.getBoolean("enableSoundRestorer", false))
+//                SoundRestorer.restoreSound(MyMcuCommunicator);
+//        } catch (Exception e) {
+//        }
 
         try {
             if(RestoreBrightness(getApplicationContext())){
@@ -166,6 +182,14 @@ public class BrightnessService extends Service {
         }
 
     }
+    public static int getSettingInt(String str, int i) {
+        SysProviderOpt sysProviderOpt = mSysProviderOpt;
+        if (sysProviderOpt != null) {
+            return sysProviderOpt.getRecordInteger(str, i);
+        }
+        return 0;
+    }
+
 
 
     public static boolean IncreaseBrightness(Context context){
@@ -214,6 +238,12 @@ public class BrightnessService extends Service {
             MyApp.getContext().sendBroadcast(intent);
 
             MyMcuCommunicator.sendCommand(new McuCommands.SetBrightnessLevel((byte)value));
+
+            setSystemBrightness(MyApp.getContext(), value);
+
+            if (mSysProviderOpt != null)
+                mSysProviderOpt.updateRecord(SysProviderOpt.KEY_BRIGHTNESS_SETTINGS, String.valueOf(value),false);
+
             return true ;
         }
         catch (Exception e) {
@@ -223,7 +253,24 @@ public class BrightnessService extends Service {
         }
 
     }
+    public static void setSystemBrightness(Context context, int i) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.System.canWrite(context)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+                // Tu dois attendre que l'utilisateur accepte avant de continuer
+            } else {
+                // Tu peux modifier les paramètres ici
+            }
+        }
+        Settings.System.putInt(context.getContentResolver(), "screen_brightness", i <= 0 ? 0 : i >= 100 ? 255 : (int) (((float) i) * 2.55f));
+    }
     public static boolean RestoreBrightness(Context context) throws Exception {
+
+
+
         if (isAutomaticBrightness){
             boolean isNight = TimeHelper.IsNight();
             if (BrightnessService.isNightMode != isNight)

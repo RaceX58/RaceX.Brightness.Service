@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/ic_sun.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#FFD700"> <!-- Or brillant -->
+
+    <!-- 1. Cercle central ÉPAIS (obligatoire) -->
+<path
+android:fillColor="#FFFFFF"
+android:pathData="M12,8a4,4 0,1 1,0 8,4 4,0 0,1 0,-8z"/>
+
+    <!-- 2. Rayons en forme de rectangles ÉPAIS (8 rotations) -->
+    <!-- Rayon vertical -->
+<path
+android:fillColor="#FFFFFF"
+android:pathData="M11,2h2v6h-2z"/> <!-- Rectangle 2x6 pixels -->
+
+    <!-- Rotations à 45° les unes des autres -->
+<path android:pathData="M11,2h2v6h-2z" android:rotation="45"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="90"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="135"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="180"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="225"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="270"/>
+<path android:pathData="M11,2h2v6h-2z" android:rotation="315"/>
+    </vector>
