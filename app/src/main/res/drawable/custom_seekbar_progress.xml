@@ -5,7 +5,7 @@
         <shape android:shape="rectangle">
             <corners android:radius="8dp"/>
             <solid android:color="#50FFFFFF"/>  <!-- Gris semi-transparent -->
-            <size android:height="8dp"/>  <!-- Épaisseur du fond -->
+            <size android:height="4dp"/>  <!-- Épaisseur du fond -->
         </shape>
     </item>
 
@@ -15,7 +15,7 @@
             <shape android:shape="rectangle">
                 <corners android:radius="8dp"/>
                 <solid android:color="#FFFFFF"/>  <!-- Blanc pur -->
-                <size android:height="8dp"/>  <!-- Épaisseur identique -->
+                <size android:height="4dp"/>  <!-- Épaisseur identique -->
             </shape>
         </clip>
     </item>

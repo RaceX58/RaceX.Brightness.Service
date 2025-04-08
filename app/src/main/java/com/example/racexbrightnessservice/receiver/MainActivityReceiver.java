@@ -13,6 +13,10 @@ import com.example.racexbrightnessservice.helpers.TimeHelper;
 import com.example.racexbrightnessservice.service.BrightnessService;
 import com.example.racexbrightnessservice.utils.KswUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivityReceiver extends BroadcastReceiver {
 
     MainActivity mainActivity;
@@ -31,16 +35,27 @@ public class MainActivityReceiver extends BroadcastReceiver {
                 double latitude = Double.parseDouble(PreferenceHelper.sInstance.getString("lastKnowLocationLatitude", "-9999"));
                 double longitude = Double.parseDouble(PreferenceHelper.sInstance.getString("lastKnowLocationLongitude", "-9999"));
 
-                if (latitude != -9999 && longitude != -9999)
-                    mainActivity.tvDaylightDuration.setText(TimeHelper.GetSunriseTimeString(latitude, longitude) + " - " + TimeHelper.GetSunsetTimeString(latitude, longitude));
-                break;
+                if (latitude != -9999 && longitude != -9999){
+                    Date sunriseTime = TimeHelper.GetSunriseTimeDate(latitude, longitude);
+                    Date sunsetTime = TimeHelper.GetSunsetTimeDate(latitude, longitude);
+                    // Formatteur d'heure au format HH:mm
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+                    // Conversion et affichage
+                    assert sunriseTime != null;
+                    mainActivity.tvSunriseTime.setText(sdf.format(sunriseTime));
+                    assert sunsetTime != null;
+                    mainActivity.tvSunsetTime.setText(sdf.format(sunsetTime));
+                    break;
+                }
+
+
             case "ovh.msinfo.BRIGHTNESS_UPDATED":
-                mainActivity.sliderCurrentBrightness.setValue(BrightnessService.brightnessValue);
+                mainActivity.sliderCurrentBrightness.setProgress(BrightnessService.brightnessValue);
                 mainActivity.tvCurrentBrightness.setText(String.valueOf(BrightnessService.brightnessValue));
                 break;
             case "ovh.msinfo.NIGHT_MODE":
-                mainActivity.sliderCurrentBrightness.setValue(BrightnessService.brightnessValue);
-                mainActivity.testNightMode.setChecked(BrightnessService.isNightMode);
+                mainActivity.sliderCurrentBrightness.setProgress(BrightnessService.brightnessValue);
                 mainActivity.tvCurrentBrightness.setText(String.valueOf(BrightnessService.brightnessValue));
                 break;
             case KswUtils.ZXW_CAN_KEY_EVT:

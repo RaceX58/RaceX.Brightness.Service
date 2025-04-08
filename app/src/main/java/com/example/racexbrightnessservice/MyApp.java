@@ -32,7 +32,7 @@ public class MyApp extends Application {
         BrightnessService.dayModeBrightness = PreferenceHelper.sInstance.getInt("dayModeBrightness",80);
         BrightnessService.nightModeBrightness = PreferenceHelper.sInstance.getInt("nightModeBrightness",20);
         BrightnessService.hotspotSupport = PreferenceHelper.sInstance.getBoolean("hotspotSupport",false);
-        BrightnessService.restoreBrightnessService = PreferenceHelper.sInstance.getBoolean("restoreBrightnessService",false);
+        BrightnessService.restoreBrightnessService = PreferenceHelper.sInstance.getBoolean("restoreBrightnessService",true);
     }
     @Override
     public void onCreate() {

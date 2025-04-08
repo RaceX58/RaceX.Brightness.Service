@@ -1,260 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:orientation="vertical"-->
-<!--    android:padding="24dp"-->
-<!--    android:background="@drawable/bg_sun_moon">-->
-
-<!--    &lt;!&ndash; En-tête avec titre et switch &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginBottom="24dp">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:text="Mode automatique"-->
-<!--            android:textSize="24sp"-->
-<!--            android:textStyle="bold"/>-->
-
-<!--        <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--            android:id="@+id/autoModeSwitch"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:checked="true"-->
-<!--            app:trackTint="#FFFFFF"-->
-<!--            />-->
-<!--    </LinearLayout>-->
-
-<!--    &lt;!&ndash; Section Luminosité &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Luminosité"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:textSize="20sp"-->
-<!--        android:layout_marginBottom="8dp"/>-->
-
-<!--    &lt;!&ndash; Curseur de luminosité &ndash;&gt;-->
-<!--    <SeekBar-->
-<!--        android:id="@+id/sliderCurrentBrightness"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:max="100"-->
-<!--        android:progress="50"-->
-<!--        android:progressDrawable="@drawable/custom_seekbar_progress"-->
-<!--        android:thumb="@drawable/custom_thumb"-->
-<!--        android:layout_marginBottom="8dp"-->
-
-<!--        android:splitTrack="false"/>-->
-
-<!--    &lt;!&ndash; Luminosité actuelle &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginBottom="24dp">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Luminosité actuelle: "-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textSize="20sp"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:id="@+id/tvCurrentBrightness"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="50"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textSize="20sp"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="%"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textSize="20sp"-->
-<!--            />-->
-<!--    </LinearLayout>-->
-
-
-<!--    &lt;!&ndash; Lever du soleil avec icône &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginBottom="4dp">-->
-
-<!--        &lt;!&ndash;        <ImageView&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_width="24dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_height="24dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:src="@drawable/ic_sunrise"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_marginEnd="8dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            app:tint="#FFA000"/>&ndash;&gt;-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Lever du soleil"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textSize="20sp"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="end"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:text="Coucher du soleil"-->
-<!--            android:textSize="20sp"/>-->
-<!--    </LinearLayout>-->
-
-<!--    &lt;!&ndash; Coucher du soleil avec icône &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        &lt;!&ndash;        <ImageView&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_width="24dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_height="24dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:src="@drawable/ic_sun"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_marginEnd="8dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:textColor="#FFFFFF"&ndash;&gt;-->
-<!--        &lt;!&ndash;            app:tint="#FF7043"/>&ndash;&gt;-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/sunriseTime"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="06:28"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textSize="20sp"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/sunsetTime"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="end"-->
-<!--            android:text="20:50"-->
-<!--            android:textSize="20sp"/>-->
-<!--    </LinearLayout>-->
-
-<!--</LinearLayout>-->
-
-
-
-
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp">
-    <TableLayout
+    android:padding="24dp"
+    android:background="@drawable/bg_sun_moon">
+
+    <!-- En-tête avec titre et switch -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:stretchColumns="*"
-        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp"
+        android:paddingHorizontal="16dp">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchEnableService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:trackTint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:text="Activer le service"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/icon_moon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_moon"
+            />
+    </LinearLayout>
+
+
+    <!-- Section Luminosité -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Luminosité"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Curseur de luminosité -->
+    <SeekBar
+        android:id="@+id/sliderCurrentBrightness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="50"
+        android:progressDrawable="@drawable/custom_seekbar_progress"
+        android:thumb="@drawable/custom_thumb"
+        android:layout_marginBottom="8dp"
+
+        android:splitTrack="false"/>
+
+    <!-- Luminosité actuelle -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luminosité actuelle: "
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/tvCurrentBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+<!--    Mode automatique-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:text="Mode automatique"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/autoModeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:trackTint="#FFFFFF"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         >
-        <TableRow>
+        <ImageView
+            android:id="@+id/icon_sun"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:contentDescription="Soleil"
+            android:src="@drawable/ic_sun"
+            app:tint="#FFFFFF" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            >
+            <!-- Lever du soleil avec icône -->
             <LinearLayout
-                android:id="@+id/column1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lever du soleil"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"/>
+
+
+
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <com.google.android.material.textview.MaterialTextView
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    >
+
+
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Luminosité"
-                        android:padding="10dp"
-                        />
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvCurrentBrightness"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        />
+
+                        android:gravity="end"
+                        android:textColor="#FFFFFF"
+                        android:text="Coucher du soleil"
+                        android:textSize="20sp"/>
                 </LinearLayout>
 
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderCurrentBrightness"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:valueFrom="0"
-                    android:valueTo="100"
-
-                    />
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/testNightMode"
-                    android:layout_width="wrap_content"
-                    android:text="Mode nuit"
-                    android:layout_marginTop="8dp"
-                    android:layout_height="wrap_content"/>
-
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/btnIncreaseBrightness"-->
-<!--                    style="@style/Widget.Material3.Button"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Augmenter la luminosité"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:layout_marginTop="5dp"/>-->
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/btnDecreaseBrightness"-->
-<!--                    style="@style/Widget.Material3.Button"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Réduire la luminosité"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:layout_marginTop="5dp"/>-->
             </LinearLayout>
 
-
+            <!-- Coucher du soleil avec icône -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/btnStartService"-->
-<!--                    style="@style/Widget.Material3.Button"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Démarrer Service"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:padding="10dp"/>-->
+                android:orientation="horizontal">
 
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/btnStopService"-->
-<!--                    style="@style/Widget.Material3.Button"-->
+                <!--        <ImageView-->
+                <!--            android:layout_width="24dp"-->
+                <!--            android:layout_height="24dp"-->
+                <!--            android:src="@drawable/ic_sun"-->
+                <!--            android:layout_marginEnd="8dp"-->
+                <!--            android:textColor="#FFFFFF"-->
+                <!--            app:tint="#FF7043"/>-->
+
+                <TextView
+                    android:id="@+id/tvSunriseTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="06:28"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/tvSunsetTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="20:50"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:gravity="center"-->
+<!--    android:padding="16dp">-->
+<!--    <TableLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:stretchColumns="*"-->
+<!--        android:layout_gravity="center"-->
+<!--        >-->
+<!--        <TableRow>-->
+<!--            <LinearLayout-->
+<!--                android:id="@+id/column1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                >-->
+<!--                <LinearLayout-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Arrêter Service"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:layout_marginTop="5dp"/>-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <com.google.android.material.textview.MaterialTextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Luminosité"-->
+<!--                        android:padding="10dp"-->
+<!--                        />-->
+<!--                    <com.google.android.material.textview.MaterialTextView-->
+<!--                        android:id="@+id/tvCurrentBrightness"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:padding="10dp"-->
+<!--                        />-->
+<!--                </LinearLayout>-->
+
+<!--                <com.google.android.material.slider.Slider-->
+<!--                    android:id="@+id/sliderCurrentBrightness"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:valueFrom="0"-->
+<!--                    android:valueTo="100"-->
+
+<!--                    />-->
+
+<!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+<!--                    android:id="@+id/testNightMode"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:text="Mode nuit"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+
+<!--            </LinearLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                >-->
 <!--                <LinearLayout-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
@@ -264,46 +293,31 @@
 <!--                        android:layout_width="wrap_content"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:layout_marginTop="5dp"-->
-<!--                        android:text="Luminosité automatique"/>-->
-<!--                    <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--                        android:id="@+id/switchAutomaticBrightness"-->
+<!--                        android:text="Heure de levée du soleil : "/>-->
+<!--                    <com.google.android.material.textview.MaterialTextView-->
+<!--                        android:id="@+id/tvDaylightDuration"-->
 <!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"/>-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        />-->
 <!--                </LinearLayout>-->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Heure de levée du soleil : "/>
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvDaylightDuration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        />
-                </LinearLayout>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnTestSettings"
-                    style="@style/Widget.Material3.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Settings"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/btnTestSettings"-->
+<!--                    style="@style/Widget.Material3.Button"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Settings"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:layout_marginTop="5dp"/>-->
+<!--            </LinearLayout>-->
 
-        </TableRow>
+<!--        </TableRow>-->
 
-    </TableLayout>
+<!--    </TableLayout>-->
 
 
 
 
 
-</LinearLayout>
+<!--</LinearLayout>-->
